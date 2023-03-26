@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+
+.heading {
+  @apply font-jakarta text-6xl leading-none font-bold;
+}
+
+.sub-heading1 {
+  @apply font-jakarta text-2xl leading-none font-bold;
+}
+
+.sub-heading2 {
+  @apply font-jakarta text-xl leading-none font-bold;
+}
+
+.parag1 {
+  @apply font-jakarta text-xl leading-none;
+}
+
+.parag2 {
+  @apply font-jakarta text-lg leading-none;
+}
+
+.parag-bold {
+  @apply font-jakarta leading-none font-semibold;
+}
+
+.parag3 {
+  @apply font-jakarta text-sm leading-none;
+}
+
+@tailwind utilities;
