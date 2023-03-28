@@ -1,6 +1,6 @@
 import running from "../../Assets/illustration png.png";
 import { CaretDown } from "@phosphor-icons/react";
-import NewsletterMail from "../../Components/NewsletterMail";
+import NewsletterMail from "./NewsletterMail";
 
 function Hero() {
   return (

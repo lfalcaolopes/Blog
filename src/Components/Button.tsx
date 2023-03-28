@@ -1,6 +1,6 @@
 function Button({ text }: { text: string }) {
   return (
-    <button className="bg-custom-blue p-4 rounded-md text-white sub-heading2" type="submit">
+    <button className="bg-custom-blue p-4 rounded-md text-white parag-bold" type="submit">
       {text}
     </button>
   );

@@ -1,6 +1,6 @@
 import mail from "../../assets/mail.png";
 import Button from "../../Components/Button";
-import NewsletterMail from "../../Components/NewsletterMail";
+import NewsletterMail from "./NewsletterMail";
 
 function Newsletter() {
   return (

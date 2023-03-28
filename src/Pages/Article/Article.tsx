@@ -1,4 +1,3 @@
-import React from "react";
 import ArticleRoute from "./ArticleRoute";
 import img from "../../assets/articleCover.png";
 import Topic from "./Topic";
