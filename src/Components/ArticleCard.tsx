@@ -1,4 +1,4 @@
-import articleImg from "../assets/articleCover.png";
+import articleImg from "../Assets/articleCover.png";
 import { HashLink as Link } from "react-router-hash-link";
 
 function ArticleCard({ title }: { title: string }) {
