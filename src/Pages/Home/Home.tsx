@@ -2,7 +2,6 @@ import Newsletter from "./Newsletter";
 import PostBundle from "./PostBundle";
 import Description from "./Description";
 import Hero from "./Hero";
-import Footer from "../../Components/Footer";
 
 function Home() {
   return (

@@ -1,5 +1,5 @@
 import ArticleRoute from "./ArticleRoute";
-import img from "../../assets/articleCover.png";
+import img from "../../Assets/articleCover.png";
 import Topic from "./Topic";
 
 function Article() {
