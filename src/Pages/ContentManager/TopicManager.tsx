@@ -1,12 +1,11 @@
 import React from "react";
 
 function TopicManager({ id }: { id: string }) {
-  console.log(id);
   return (
     <>
       <div className="sm:col-span-6">
         <label htmlFor={`topicTitle${id}`} className="block sub-heading1 leading-10 text-gray-700">
-          Subtítulo
+          {id === "0" ? "Título" : "Subtítulo"}
         </label>
 
         <input

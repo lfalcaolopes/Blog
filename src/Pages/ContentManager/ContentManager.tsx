@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Button from "../../Components/Button";
 import CoverPhoto from "./CoverPhoto";
-import MainTopicManager from "./MainTopicManager";
 import TopicManager from "./TopicManager";
 
 function ContentManager() {
@@ -24,10 +23,10 @@ function ContentManager() {
             </p>
 
             <div className="mt-6 flex flex-col space-y-6">
-              <MainTopicManager />
+              <TopicManager id="0" />
 
               {topics.map((_, index) => {
-                return <TopicManager key={index} id={`${index}`} />;
+                return <TopicManager key={index} id={`${index + 1}`} />;
               })}
 
               <a

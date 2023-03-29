@@ -1,21 +1,18 @@
-import React from "react";
+import { HashLink as Link } from "react-router-hash-link";
 
 function ArticleRoute() {
   return (
-    <div className="bg-custom-off-white py-4 px-[6.2rem] border-b-4 border-custom-blue">
+    <div id="rotas" className="bg-custom-off-white py-4 px-[6.2rem] border-b-4 border-custom-blue">
       <p>
         Você está em :{" "}
-        <a className="underline text-custom-blue hover:no-underline" href="">
+        <Link className="underline text-custom-blue hover:no-underline" to="/">
           Início
-        </a>{" "}
+        </Link>{" "}
         {">"}{" "}
-        <a className="underline text-custom-blue hover:no-underline" href="">
+        <Link className="underline text-custom-blue hover:no-underline" to="/#categorias">
           Categoria
-        </a>{" "}
-        {">"}{" "}
-        <a className="underline text-custom-blue hover:no-underline" href="">
-          Nome do artigo
-        </a>
+        </Link>{" "}
+        {">"} <p className="inline-flex">Nome do artigo</p>
       </p>
     </div>
   );
