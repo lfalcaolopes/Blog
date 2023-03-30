@@ -12,7 +12,7 @@ function ArticleRoute() {
         <Link className="underline text-custom-blue hover:no-underline" to="/#categorias">
           Categoria
         </Link>{" "}
-        {">"} <p className="inline-flex">Nome do artigo</p>
+        {">"} Nome do artigo
       </p>
     </div>
   );
