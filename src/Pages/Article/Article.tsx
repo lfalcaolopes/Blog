@@ -1,65 +1,89 @@
+import { useLocation } from "react-router-dom";
 import ArticleRoute from "./ArticleRoute";
-import img from "../../Assets/articleCover.png";
 import Topic from "./Topic";
+import Markdown from "markdown-to-jsx";
 import { useEffect, useState } from "react";
+import { gql, useQuery } from "@apollo/client";
 
 interface ArticleProps {
-  blocks: { body: string; id: number }[];
-  category: { data: {} };
-  cover: { data: {} };
-  createdAt: string;
-  mainTopic: string;
-  publishedAt: string;
-  slug: string;
-  title: string;
-  updatedAt: string;
+  articles: {
+    data: {
+      attributes: {
+        category: { data: { attributes: { name: string } } };
+        cover: { data: { attributes: { url: string } } };
+        mainTopic: string;
+        publishedAt: string;
+        title: string;
+        updatedAt: string;
+      };
+    }[];
+  };
 }
 
-function Article() {
-  const [apiData, setApiData] = useState<ArticleProps>();
-
-  useEffect(() => {
-    async function getPosts() {
-      const response = await fetch("http://localhost:1337/api/articles?populate=*");
-      const data = await response.json();
-      console.log(data.data[0].attributes.blocks);
-
-      setApiData(data.data[0].attributes);
+const getFullArticle = gql`
+  query getFullArticle($slug: String!) {
+    articles(filters: { slug: { contains: $slug } }) {
+      data {
+        attributes {
+          title
+          publishedAt
+          mainTopic
+          cover {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          category {
+            data {
+              attributes {
+                name
+              }
+            }
+          }
+        }
+      }
     }
+  }
+`;
 
-    getPosts();
-  }, []);
+function Article() {
+  const location = useLocation().pathname.split("/")[2];
 
-  return (
-    <div className="bg-custom-off-white text-custom-black pb-20">
-      <ArticleRoute />
-      <img src={img} alt="" className="w-full h-60 absolute z-0 object-cover" />
+  const { loading, error, data } = useQuery<ArticleProps>(getFullArticle, { variables: { slug: location } });
 
-      <div className="grid justify-center-center mx-40 mt-20 p-12 z-10 rounded-md bg-white drop-shadow-lg shadow-md">
-        <h1 className="heading mt-12 text-center">{apiData?.title}</h1>
+  const dataInfo = data?.articles.data[0].attributes;
 
-        <div className="h-[3px] w-40 rounded-full my-12 bg-custom-blue justify-self-center" />
+  if (loading) return <p>Loading...</p>;
+  if (error) {
+    console.log(error);
+    return <p>Error : {error.message}</p>;
+  }
+  if (dataInfo)
+    return (
+      <div className="bg-custom-off-white text-custom-black pb-20">
+        <ArticleRoute category={dataInfo.category.data.attributes.name} title={dataInfo.title} />
+        <img
+          src={"http://localhost:1337" + dataInfo.cover.data.attributes.url}
+          alt=""
+          className="w-full h-60 absolute z-0 object-cover"
+        />
 
-        <div className="flex flex-col space-y-6">
-          {apiData?.mainTopic.split("\n\n").map((item, index) => {
-            return (
-              <p className="parag1 leading-7" key={index}>
-                {item}
-              </p>
-            );
-          })}
+        <div className="grid justify-center-center mx-40 mt-20 py-10 px-32 z-10 rounded-md bg-white drop-shadow-lg shadow-md">
+          <h1 className="heading mt-12 text-center">{dataInfo.title}</h1>
+
+          <div className="h-[3px] w-40 rounded-full my-12 bg-custom-blue justify-self-center" />
+
+          <div className="flex flex-col space-y-8">
+            {dataInfo.mainTopic.split("\n\n").map((item, index) => {
+              return <Topic content={item} key={item[0] + index} />;
+            })}
+          </div>
         </div>
-
-        {apiData?.blocks.map((block, index) => {
-          let bodyArr = block.body.split("\n\n");
-
-          const topicTitle = bodyArr.shift()?.split(" ")[1];
-
-          return <Topic title={topicTitle} content={bodyArr} key={index} />;
-        })}
       </div>
-    </div>
-  );
+    );
+  else return null;
 }
 
 export default Article;

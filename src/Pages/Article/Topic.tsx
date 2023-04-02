@@ -1,17 +1,41 @@
-import React from "react";
+import Markdown from "markdown-to-jsx";
 
-function Topic({ title, content }: { title: string | undefined; content: string[] }) {
+function Topic({ content }: { content: string }) {
   return (
-    <div className="mt-12 grid gap-6">
-      <h2 className="sub-heading1 text-4xl ">{title}</h2>
-      {content.map((item, index) => {
-        return (
-          <p className="parag1 leading-7" key={index}>
-            {item}
-          </p>
-        );
-      })}
-    </div>
+    <Markdown
+      options={{
+        overrides: {
+          h2: {
+            props: {
+              className: "sub-heading1 text-4xl pt-12",
+            },
+          },
+          span: {
+            component: "p",
+            props: {
+              className: "parag1 leading-7",
+            },
+          },
+          li: {
+            props: {
+              className: "parag1 leading-7",
+            },
+          },
+          ol: {
+            props: {
+              className: "flex flex-col space-y-4 list-decimal list-inside",
+            },
+          },
+          ul: {
+            props: {
+              className: "flex flex-col space-y-4 list-disc list-inside",
+            },
+          },
+        },
+      }}
+    >
+      {content}
+    </Markdown>
   );
 }
 

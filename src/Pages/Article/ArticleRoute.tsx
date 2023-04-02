@@ -1,6 +1,6 @@
 import { HashLink as Link } from "react-router-hash-link";
 
-function ArticleRoute() {
+function ArticleRoute({ category, title }: { category: string | undefined; title: string | undefined }) {
   return (
     <div id="rotas" className="bg-custom-off-white py-4 px-[6.2rem] border-b-4 border-custom-blue">
       <p>
@@ -10,9 +10,9 @@ function ArticleRoute() {
         </Link>{" "}
         {">"}{" "}
         <Link className="underline text-custom-blue hover:no-underline" to="/#categorias">
-          Categoria
+          {category}
         </Link>{" "}
-        {">"} Nome do artigo
+        {">"} {title}
       </p>
     </div>
   );
