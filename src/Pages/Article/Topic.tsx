@@ -7,7 +7,7 @@ function Topic({ content }: { content: string }) {
         overrides: {
           h2: {
             props: {
-              className: "sub-heading1 text-4xl pt-12",
+              className: "sub-heading1 text-2xl sm:text-4xl pt-12",
             },
           },
           span: {

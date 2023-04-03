@@ -1,57 +1,15 @@
 import { useLocation } from "react-router-dom";
 import ArticleRoute from "./ArticleRoute";
 import Topic from "./Topic";
-import Markdown from "markdown-to-jsx";
-import { useEffect, useState } from "react";
-import { gql, useQuery } from "@apollo/client";
 
-interface ArticleProps {
-  articles: {
-    data: {
-      attributes: {
-        category: { data: { attributes: { name: string } } };
-        cover: { data: { attributes: { url: string } } };
-        mainTopic: string;
-        publishedAt: string;
-        title: string;
-        updatedAt: string;
-      };
-    }[];
-  };
-}
-
-const getFullArticle = gql`
-  query getFullArticle($slug: String!) {
-    articles(filters: { slug: { contains: $slug } }) {
-      data {
-        attributes {
-          title
-          publishedAt
-          mainTopic
-          cover {
-            data {
-              attributes {
-                url
-              }
-            }
-          }
-          category {
-            data {
-              attributes {
-                name
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+import { useQuery } from "@apollo/client";
+import { FullArticleProps } from "../../Props/types";
+import { getFullArticle } from "../../Props/queries";
 
 function Article() {
   const location = useLocation().pathname.split("/")[2];
 
-  const { loading, error, data } = useQuery<ArticleProps>(getFullArticle, { variables: { slug: location } });
+  const { loading, error, data } = useQuery<FullArticleProps>(getFullArticle, { variables: { slug: location } });
 
   const dataInfo = data?.articles.data[0].attributes;
 
@@ -62,16 +20,16 @@ function Article() {
   }
   if (dataInfo)
     return (
-      <div className="bg-custom-off-white text-custom-black pb-20">
+      <div className="bg-custom-off-white text-custom-black md:pb-20">
         <ArticleRoute category={dataInfo.category.data.attributes.name} title={dataInfo.title} />
         <img
           src={"http://localhost:1337" + dataInfo.cover.data.attributes.url}
           alt=""
-          className="w-full h-60 absolute z-0 object-cover"
+          className="w-full h-60 absolute z-0 object-cover hidden md:block"
         />
 
-        <div className="grid justify-center-center mx-40 mt-20 py-10 px-32 z-10 rounded-md bg-white drop-shadow-lg shadow-md">
-          <h1 className="heading mt-12 text-center">{dataInfo.title}</h1>
+        <div className="grid justify-center-center py-10 px-4 bg-white md:drop-shadow-lg md:shadow-md md:mx-20 md:px-12 md:mt-20 md:z-10 md:rounded-md lg:px-32 lg:mx-40">
+          <h1 className="heading text-4xl sm:text-6xl mt-4 sm:mt-12 text-center">{dataInfo.title}</h1>
 
           <div className="h-[3px] w-40 rounded-full my-12 bg-custom-blue justify-self-center" />
 

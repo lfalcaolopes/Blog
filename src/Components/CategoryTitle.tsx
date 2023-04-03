@@ -2,14 +2,15 @@ import { CaretDoubleRight } from "@phosphor-icons/react";
 
 function CategoryTitle({ title }: { title: string }) {
   return (
-    <div className="flex justify-between py-4 sub-heading1 text-custom-black">
+    <div className="flex justify-between space-x-12 sm:space-x-0 py-4 sub-heading2 sm:text-2xl text-custom-black">
       <div className="flex space-x-4 items-center">
-        <p>{title}</p>
-        <div className="h-[5px] w-8 border-b-2 border-custom-black"></div>
+        <p className="">{title}</p>
+
+        <div className="h-[5px] w-8 border-b-2 hidden sm:block border-custom-black"></div>
       </div>
 
-      <a href="" className="flex items-center space-x-2">
-        <p>Ver todos</p>
+      <a href="" className="flex text-end space-x-2 items-center">
+        <p className="w-[7.2rem] sm:w-auto">Ver todos</p>
         <CaretDoubleRight weight="bold" />
       </a>
     </div>

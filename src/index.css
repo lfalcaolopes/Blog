@@ -2,7 +2,7 @@
 @tailwind components;
 
 .heading {
-  @apply font-jakarta text-6xl leading-none font-bold;
+  @apply font-jakarta text-5xl sm:text-6xl leading-none font-bold;
 }
 
 .sub-heading1 {
@@ -14,7 +14,7 @@
 }
 
 .parag1 {
-  @apply font-jakarta text-xl leading-none;
+  @apply font-jakarta text-lg sm:text-xl leading-none;
 }
 
 .parag2 {
