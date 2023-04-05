@@ -1,5 +1,6 @@
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import { HashLink as Link } from "react-router-hash-link";
+import DropdownMenu from "./DropdownMenu";
 
 function NavBar() {
   return (
@@ -10,7 +11,7 @@ function NavBar() {
       <Link to="/" className="font-jakarta font-semibold text-4xl text-sky-900">
         Vitalidade <span className="sub-heading1 text-custom-blue">Viva</span>
       </Link>
-      <div className=" space-x-8 text-custom-black parag-bold hidden md:flex">
+      <div className="space-x-8 text-custom-black parag-bold hidden md:flex">
         <Link to="/">Home</Link>
         <Link to="/#categorias">Categorias</Link>
         <a href="" className="flex space-x-2">
@@ -18,6 +19,7 @@ function NavBar() {
           <p> Pesquisar</p>
         </a>
       </div>
+      <DropdownMenu />
     </div>
   );
 }
