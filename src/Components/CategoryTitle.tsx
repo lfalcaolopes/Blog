@@ -1,4 +1,5 @@
 import { CaretDoubleRight } from "@phosphor-icons/react";
+import { Link } from "react-router-dom";
 
 function CategoryTitle({ title }: { title: string }) {
   return (
@@ -9,10 +10,10 @@ function CategoryTitle({ title }: { title: string }) {
         <div className="h-[5px] w-8 border-b-2 hidden sm:block border-custom-black"></div>
       </div>
 
-      <a href="" className="flex text-end space-x-2 items-center ">
+      <Link to={"/categoria/" + title} className="flex text-end space-x-2 items-center ">
         <p className="w-[7.2rem] sm:w-auto">Ver todos</p>
         <CaretDoubleRight weight="bold" />
-      </a>
+      </Link>
     </div>
   );
 }

@@ -9,7 +9,10 @@ function ArticleRoute({ category, title }: { category: string | undefined; title
           Início
         </Link>{" "}
         {">"}{" "}
-        <Link className="underline text-custom-blue hover:no-underline" to="/#categorias">
+        <Link
+          className="underline text-custom-blue hover:no-underline"
+          to={"/categoria/" + category?.split(" ")[0] + " " + category?.split(" ")[1].toLowerCase()}
+        >
           {category}
         </Link>{" "}
         {">"} {title}

@@ -27,12 +27,12 @@ function Article() {
       <img
         src={"http://localhost:1337" + dataInfo?.cover.data.attributes.url}
         alt=""
-        className={"w-full h-60 absolute z-0 object-cover hidden md:block" + (imgLoaded ? "" : " hidden")}
+        className={"w-full h-[30rem] absolute z-0 object-cover hidden md:block" + (imgLoaded ? "" : " hidden")}
         onLoad={() => setImgLoaded(true)}
       />
       {!imgLoaded && <Skeleton className="w-full h-60 absolute z-0 object-cover hidden md:block" />}
 
-      <div className="grid justify-center-center py-10 px-4 bg-white md:drop-shadow-lg md:shadow-md md:mx-20 md:px-12 md:mt-20 md:z-10 md:rounded-md lg:px-32 lg:mx-40">
+      <div className="grid justify-center-center py-10 px-4 bg-white md:drop-shadow-lg md:shadow-md md:mx-20 md:px-12 md:mt-40 md:z-10 md:rounded-md lg:px-32 lg:mx-40">
         <h1 className="heading text-4xl sm:text-6xl mt-4 sm:mt-12 text-center">{dataInfo?.title}</h1>
         {loading && <Skeleton count={2} className="heading text-4xl sm:text-6xl mt-4 sm:mt-12 text-center" />}
 

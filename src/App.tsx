@@ -6,6 +6,8 @@ import Login from "./Pages/Login/Login";
 import ContentManager from "./Pages/ContentManager/ContentManager";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import CategoryArticles from "./Pages/CategoryArticles/CategoryArticles";
+import ScrollToTop from "./Helper/ScrollToTop";
 
 function App() {
   const client = new ApolloClient({
@@ -16,10 +18,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
+        <ScrollToTop />
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="artigo/:id" element={<Article />} />
+          <Route path="categoria/:id" element={<CategoryArticles />} />
           <Route path="login" element={<Login />} />
           <Route path="content-manager" element={<ContentManager />} />
         </Routes>

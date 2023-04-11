@@ -10,27 +10,20 @@ function Footer() {
           </p>
           <p className="parag2">Blog por Lucas Falcão</p>
         </div>
-        <div className="grid gap-4 justify-items-center lg:grid-cols-3">
+        <div className="grid gap-4 justify-items-center lg:grid-cols-2">
           <div className=" flex-col space-y-3 w-40 hidden lg:flex xl:w-fit">
             <p className="sub-heading2 mb-4 ">Categorias</p>
-            <Link to="/#Alimentação" className="parag2 hover:text-custom-blue hover:underline">
+            <Link to="/categoria/Alimentação saudável" className="parag2 hover:text-custom-blue hover:underline">
               Alimentação saudável
             </Link>
-            <Link to="/#Exercícios" className="parag2 hover:text-custom-blue hover:underline">
+            <Link to="/categoria/Exercícios físicos" className="parag2 hover:text-custom-blue hover:underline">
               Exercícios físicos
             </Link>
-            <Link to="/#Saúde" className="parag2 hover:text-custom-blue hover:underline">
+            <Link to="/categoria/Saúde mental" className="parag2 hover:text-custom-blue hover:underline">
               Saúde mental
             </Link>
           </div>
 
-          <div className=" hidden flex-col space-y-3 lg:flex">
-            <p className="sub-heading2 mb-4">Sobre mim</p>
-
-            <p className="parag2 cursor-pointer hover:text-custom-blue hover:underline">Esses links</p>
-            <p className="parag2 cursor-pointer hover:text-custom-blue hover:underline">Não levam</p>
-            <p className="parag2 cursor-pointer hover:text-custom-blue hover:underline">A lugar nenhum</p>
-          </div>
           <div className="flex-col space-y-3 hidden sm:flex">
             <p className="sub-heading2 mb-4">Contato</p>
 

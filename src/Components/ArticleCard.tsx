@@ -6,7 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import { CardProps } from "../Props/types";
 import { useState } from "react";
 
-function ArticleCard({ data, loading }: { data: CardProps; loading: boolean }) {
+function ArticleCard({ data, isBigger }: { data: CardProps; isBigger: boolean }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const publishDate = dayjs(data.attributes.publishedAt).format("MMM YY");
 
@@ -17,7 +17,9 @@ function ArticleCard({ data, loading }: { data: CardProps; loading: boolean }) {
   return (
     <Link
       to={"/artigo/" + data.attributes.slug}
-      className="flex flex-col justify-between bg-custom-off-white min-w-[13rem] w-[20vw] aspect-[3/4] p-4 rounded-lg"
+      className={`flex flex-col justify-between bg-custom-off-white w-[20vw]  p-4 rounded-lg ${
+        isBigger ? "min-w-[17rem] sm:min-w-[13rem]" : "min-w-[13rem]"
+      }`}
     >
       <div>
         <img
